@@ -1204,8 +1204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 394198490}
   _speed: 1.5
-  _point1: {fileID: 450248325}
-  _point2: {fileID: 1479722281}
+  m_Points:
+  - {fileID: 450248325}
+  - {fileID: 1479722281}
 --- !u!1 &450248324
 GameObject:
   m_ObjectHideFlags: 0

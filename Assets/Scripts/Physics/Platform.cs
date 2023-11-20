@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Physics
@@ -11,18 +12,22 @@ namespace Physics
         private float _speed;
 
         [SerializeField]
-        private Transform _point1;
-
-        [SerializeField]
-        private Transform _point2;
-
-
+        private List<Transform> m_Points;
+        
         private Transform _currentTarget;
+
+        private int _targetIndex;
 
 
         private void Start()
         {
-            _currentTarget = _point1;
+            StartMoving();
+        }
+
+        private void StartMoving()
+        {
+            _targetIndex = 0;
+            _currentTarget = m_Points[_targetIndex];
         }
 
         private void FixedUpdate()
@@ -46,7 +51,15 @@ namespace Physics
             var magnitude = distance.magnitude;
             if (magnitude <= 0.1f)
             {
-                _currentTarget = (_currentTarget == _point1) ? _point2 : _point1;
+                if (_currentTarget == m_Points[^1])
+                {
+                    StartMoving();
+                }
+                else
+                {
+                    _targetIndex++;
+                    _currentTarget = m_Points[_targetIndex];
+                }
             }
         }
     }
