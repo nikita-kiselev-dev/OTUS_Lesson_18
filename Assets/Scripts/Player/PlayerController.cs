@@ -1,20 +1,8 @@
+using Player;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : PlayerControllerBase
 {
-    private static readonly int IsRunning = Animator.StringToHash("IsRunning");
-    private static readonly int IsJumping = Animator.StringToHash("IsJumping");
-
-    [SerializeField]
-    private SpriteRenderer _spriteRenderer;
-
-    [SerializeField]
-    private SpriteRenderer _shadowSpriteRenderer;
-
-    [SerializeField]
-    private Animator _animator;
-
-
     #region Pseudo-physics
 
     [SerializeField]
